@@ -1,9 +1,8 @@
 from typing import Any
-from multiprocessing import Queue
+from queue import Full
+from multiprocessing.queues import Queue
 
 def handle_interprocess(data_queue: Queue, item: Any, block=True, timeout=None) -> None:
-    try:
-        data_queue.put(item, block, timeout)
-    except Queue.Full:
+    if data_queue.qsize() == data_queue._maxsize:
         data_queue.get_nowait()
-        data_queue.put(item, block, timeout)
+    data_queue.put(item, block, timeout)

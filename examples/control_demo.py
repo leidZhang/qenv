@@ -1,6 +1,5 @@
 # other imports
 import os
-import sys
 # 3rd party imports
 import cv2
 # custom imports
