@@ -1,11 +1,14 @@
 # othre imports
 import os
+import time
 # 3rd party imports
 import keyboard
 from typing import List
+from multiprocessing import Queue, Lock
 # custom imports
 from qenv.core import Controller
 from qenv.core import QCAR_CONTROL_PROTOCAL
+from qenv.core import handle_interprocess
 from .strategies import *
 from .constants import *
 
@@ -27,7 +30,7 @@ class KeyboardController(Controller):
         normalize_steering(y_axis_signal: int): Normalizes the steering signal.
         normalize_throttle(x_axis_signal: int): Normalizes the throttle signal.
         setup(): Initializes the controller state and press strategies.
-        execute(): Processes keyboard inputs and updates the QCar state accordingly.
+        execute(queue: Queue): Processes keyboard inputs and updates the QCar state accordingly.
     """
 
     def __init__(self, mode: str = 'QCar') -> None:
@@ -68,7 +71,7 @@ class KeyboardController(Controller):
         else:
             raise ValueError('Control Protocol cannot be found')
 
-    def execute(self) -> None:
+    def execute(self, queue: Queue = None) -> None:
         if keyboard.is_pressed('w'):
             self.x_axis_signal += X_AXIS_DECREASE
             if self.x_axis_signal > MAX_X_AXIS_VALUE:
@@ -95,3 +98,7 @@ class KeyboardController(Controller):
         if self.mode == 'QCar':
             self.state['throttle'] = self.normalize_throttle(self.x_axis_signal)
             self.state['steering'] = self.normalize_steering(self.y_axis_signal)
+
+        if queue is not None:
+            handle_interprocess(queue, self.state)
+        time.sleep(0.02)

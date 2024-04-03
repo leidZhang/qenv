@@ -41,7 +41,7 @@ class VirtualControl(ServiceModule):
         ]
 
     def unlock(self, state: dict) -> None:
-        # for non-manul policies
+        # for non-manual policies
         state['control_flags']['safe'] = state
         self.state = state
 
@@ -67,6 +67,9 @@ class VirtualControl(ServiceModule):
         self.my_car.terminate()
 
     def execute(self, state: dict) -> None:
+        if state == None:
+            return None
+
         self.state = state
         # execute strategies
         for strategy in self.strategies:

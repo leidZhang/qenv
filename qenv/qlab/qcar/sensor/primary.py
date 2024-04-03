@@ -129,6 +129,15 @@ class VirtualRGBDCamera(ServiceModule):
         return self.read_depth_image(mode)
 
 
+class VirtualLidar:
+    """
+    Got some issue here
+    """
+
+    def __init__(self) -> None:
+        pass
+
+
 class VirtualGPS(ServiceModule):
     """
     A virtual GPS module for the QCar simulation environment, providing position and velocity data.

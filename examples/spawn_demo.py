@@ -15,10 +15,10 @@ def spawn_demo() -> None:
     node: RoadMapNode = roadmap.nodes[node_id]
     setup(initialPosition=[node.pose[0], node.pose[1], 0], initialOrientation=[0, 0, node.pose[2]])
 
-    qlabs: QuanserInteractiveLabs = QuanserInteractiveLabs()
-    qlabs.open("localhost")
-    node_sequence: list = [10, 17, 10]
-    waypoint_sequence: np.ndarray = roadmap.generate_path(node_sequence)
+    # qlabs: QuanserInteractiveLabs = QuanserInteractiveLabs()
+    # qlabs.open("localhost")
+    # node_sequence: list = [10, 17, 10]
+    # waypoint_sequence: np.ndarray = roadmap.generate_path(node_sequence)
 
     # rotation:list = [0, 0, 0]
     # scale:list = [0.01, 0.01, 0.01]
