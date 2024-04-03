@@ -1,0 +1,2 @@
+QCAR_MAX_STEERING: float = 0.5
+QCAR_MAX_THROTTLE: float = 0.3
