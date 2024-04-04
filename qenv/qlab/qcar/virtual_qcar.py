@@ -8,20 +8,25 @@ from qenv.qlab.qcar.sensor import VirtualCSICamera, VirtualRGBDCamera
 
 class VirtualBaseQCar:
     """
-    The VirtualBaseQCar class simulates a virtual car's control system, including its motion apparatus, cameras, and other sensors.
+    The VirtualBaseQCar class simulates a virtual car's control system, including
+    its motion apparatus, cameras, and other sensors.
 
     Attributes:
         running_gear (VirtualControl): Handles the virtual car's motion control.
-        csi_cameras (dict[VirtualCSICamera]): A collection of CSI cameras for capturing environmental imagery.
-        rgbd_camera (VirtualRGBDCamera): An RGB-D camera for capturing color images and depth information.
+        csi_cameras (dict[VirtualCSICamera]): A collection of CSI cameras for capturing
+            environmental imagery.
+        rgbd_camera (VirtualRGBDCamera): An RGB-D camera for capturing color images and
+            depth information.
 
     Methods:
         __init__(): Initializes the virtual car's control systems and sensors.
-        terminate(): Terminates all sensors and motion apparatus, ensuring proper resource release.
-        execute_modules(input: Union[Queue, dict]): Controls the virtual car's behavior based on the provided commands.
+        terminate(): Terminates all sensors and motion apparatus, ensuring proper resource
+            release.
+        execute_modules(input: Union[Queue, dict]): Controls the virtual car's behavior
+            based on the provided commands.
 
-    This class allows for the control of the virtual car's movement through policy inputs or programmatic commands and is
-    capable of handling commands from a multiprocessing queue.
+    This class allows for the control of the virtual car's movement through policy inputs or
+    programmatic commands and is capable of handling commands from a multiprocessing queue.
     """
 
     def __init__(self) -> None:

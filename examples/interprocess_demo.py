@@ -58,11 +58,10 @@ def interprocess_demo() -> None:
     try:
         # init instances
         queue: Queue = Queue(maxsize=5)
-
+        process: Process = Process(target=run_qcar, args=(queue, ))
         policy: KeyboardController = KeyboardController()
+        # setup process
         policy.setup()
-        # create qcar process
-        process = Process(target=run_qcar, args=(queue, ))
         process.start()
         # execute policy
         while True:

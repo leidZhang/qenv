@@ -16,10 +16,11 @@ from .constants import CSI_CAMERA_SETTING, RGBD_CAMERA_SETTING
 
 class VirtualCSICamera(ServiceModule): # wrapper class, implement more functions if needed
     """
-    A service module that provides an interface to a CSI camera for image capture in a virtual environment.
+    A service module that provides an interface to a CSI camera for image capture in a virtual
+    environment.
 
-    The class encapsulates the functionality of a 2D camera, allowing for image capture, display, and retrieval
-    with optional debugging features.
+    The class encapsulates the functionality of a 2D camera, allowing for image capture, display,
+    and retrieval with optional debugging features.
 
     Attributes:
         id (int): The identifier for the camera, defaulting to 3.
@@ -64,8 +65,8 @@ class VirtualRGBDCamera(ServiceModule):
     """
     A service module for interfacing with a virtual RGB-D camera within a simulation environment.
 
-    This class provides methods to capture, display, and retrieve RGB and depth images from a simulated 3D camera,
-    with optional debugging features for visualizing the captured images.
+    This class provides methods to capture, display, and retrieve RGB and depth images from a
+    simulated 3D camera, with optional debugging features for visualizing the captured images.
 
     Attributes:
         debug (bool): Indicates whether debugging features like image display are enabled.
@@ -74,10 +75,14 @@ class VirtualRGBDCamera(ServiceModule):
     Methods:
         terminate(): Shuts down the camera and releases any associated resources.
         show_image_rgb(): Displays the current RGB image from the camera if debugging is enabled.
-        read_rgb_image(): Captures the latest RGB image from the camera and returns it as a numpy ndarray.
-        show_image_depth(mode: str): Displays the current depth image in the specified mode if debugging is enabled.
-        read_depth_image(mode: str): Captures the latest depth image in the specified mode from the camera and returns it as a numpy ndarray.
-        read_image(mode: str): Captures either the latest RGB or depth image based on the mode specified and returns it as a numpy ndarray.
+        read_rgb_image(): Captures the latest RGB image from the camera and returns it as a numpy
+            ndarray.
+        show_image_depth(mode: str): Displays the current depth image in the specified mode if
+            debugging is enabled.
+        read_depth_image(mode: str): Captures the latest depth image in the specified mode from the
+            camera and returns it as a numpy ndarray.
+        read_image(mode: str): Captures either the latest RGB or depth image based on the mode
+            specified and returns it as a numpy ndarray.
     """
 
     def __init__(self, debug: bool = False) -> None:
@@ -142,7 +147,8 @@ class VirtualGPS(ServiceModule):
     """
     A virtual GPS module for the QCar simulation environment, providing position and velocity data.
 
-    This class simulates a GPS device that tracks the position and calculates the speed vector of a QCar based on its movement over time.
+    This class simulates a GPS device that tracks the position and calculates the speed vector of a
+    QCar based on its movement over time.
 
     Attributes:
         gps (QCarGPS): An instance of the QCarGPS class to simulate GPS functionality.
@@ -155,9 +161,11 @@ class VirtualGPS(ServiceModule):
     Methods:
         terminate(): Terminates the GPS simulation.
         get_gps_state(): Retrieves the current position and orientation of the QCar from the GPS.
-        calculate_speed_vector(current_state: np.ndarray, delta_t: float): Calculates the speed vector based on the current and last states.
+        calculate_speed_vector(current_state: np.ndarray, delta_t: float): Calculates the speed vector
+            based on the current and last states.
         setup(): Initializes the GPS module, creating or overwriting the GPS log, and sets the initial state.
-        read_gps_state(): Reads the current GPS state, calculates the speed if necessary, and updates the state and time stamp.
+        read_gps_state(): Reads the current GPS state, calculates the speed if necessary, and updates
+            the state and time stamp.
     """
 
     def __init__(self) -> None:
@@ -178,7 +186,7 @@ class VirtualGPS(ServiceModule):
 
         return position_x, position_y, orientation
 
-    def calcualte_speed_vector(self, current_state: np.ndarray, delta_t: float) -> tuple[float, float]:
+    def calculate_speed_vector(self, current_state: np.ndarray, delta_t: float) -> tuple[float, float]:
         # calculate differents
         delta_x_sq: float = math.pow((current_state[0] - self.last_state[0]), 2)
         delta_y_sq: float  = math.pow((current_state[1] - self.last_state[1]), 2)
@@ -204,7 +212,7 @@ class VirtualGPS(ServiceModule):
         # calculate absolute speed
         if self.current_state != self.last_state or current_time - self.time_stamp >= 0.25:
             self.delta_t = current_time - self.time_stamp
-            self.speed_vecotr = self.calcualte_speed_vector(self.current_state, self.delta_t)
+            self.speed_vector = self.calculate_speed_vector(self.current_state, self.delta_t)
             # update time stamp
             self.time_stamp = current_time
             # update position
