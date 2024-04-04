@@ -21,13 +21,16 @@ class VirtualControl(ServiceModule):
         state (dict): The current state of the QCar, including control flags and signals.
         my_car (QCar): An instance of the QCar class for simulation interaction.
         leds (np.ndarray): An array representing the state of the QCar's LEDs.
-        strategies (List[VirtualControlStrategy]): A list of control strategies to be applied to the QCar.
+        strategies (List[VirtualControlStrategy]): A list of control strategies to be applied
+            to the QCar.
 
     Methods:
         unlock(state: dict): Unlocks the QCar for non-manual control policies.
-        handle_leds(): Updates the LEDs based on the current steering direction and other control flags.
+        handle_leds(): Updates the LEDs based on the current steering direction and other control
+            flags.
         terminate(): Terminates the QCar simulation.
-        execute(state: dict): Executes the control strategies and updates the QCar's state in the simulation.
+        execute(state: dict): Executes the control strategies and updates the QCar's state in the
+            simulation.
     """
 
     def __init__(self) -> None:
