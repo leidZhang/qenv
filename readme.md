@@ -22,36 +22,12 @@ To install and run this project, you need to have some packages, QLab and Logite
 - Logitech G Hub: https://www.logitechg.com/en-ca/innovation/g-hub.html
 - quanser package and QLab are provided by Quanser
 
-## Usage
-You can choose to only control QCar in the virtual environment or control the QCar in both virtual environment and the real world.
+## Project Preview
+### QCar Setting
+<img src="doc/images/gui.png" width="450" height="500">
 
-For Logitech steering wheel controller
-- Steering:
-  <br>Turn the steering wheel left or right to steer the QCar in the respective direction.
-- Throttle:
-  <br>Gently press the accelerator pedal on the Logitech steering wheel controller to increase speed. You can stop the QCar by release the pedal.
-- Cruise Control:
-  <br>Press Down button on the steering wheel controller to engage and disengage cruise control, maintaining a steady speed.
-- Reverse:
-  <br>Press Up button on the steering wheel controller to enable and diable the reverse function.
-- Toggle Lights On/Off:
-  <br>Press A button on the steering wheel controller to turn the QCar's light on and off, enhancing visibility during different conditions.
-- Safe Mode:
-  <br>Press XBOX button on the steering wheel controller to lock/unlock the QCar.
-
-<br>For Keyboard controller
-- Steering:
-  <br>Press 'A' or 'D' to steer the QCar in the respective direction.
-- Throttle:
-  <br>Press 'W' to increase speed. You can stop the QCar by pressing 'S'.
-- Cruise Control:
-  <br>Press 'Q' to engage and disengage cruise control, maintaining a steady speed.
-- Reverse:
-  <br>Press 'E' to enable and diable the reverse function.
-- Toggle Lights On/Off:
-  <br>Press 'L' to turn the QCar's light on and off, enhancing visibility during different conditions.
-- Safe Mode:
-  <br>Press '/' to lock/unlock the QCar.
+### Control QCar by Script
+![control script demo](doc/gifs/edge_following.gif)
 
 ## License
 This project is licensed under the Apache-2.0 license - see the LICENSE file for details.
