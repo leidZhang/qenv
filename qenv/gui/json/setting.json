@@ -1,0 +1,14 @@
+{
+    "csi_camera": false, 
+    "rgbd_camera": true, 
+    "lidar": false, 
+    "operation_mode": "local", 
+    "controller": "wheel", 
+    "traffic": "right", 
+    "video": "qlab", 
+    "spawn_node": "17", 
+    "destination_node": "50", 
+    "port": "8080", 
+    "ip": "192.168.2.15", 
+    "device": "0"
+}
