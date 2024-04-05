@@ -81,11 +81,12 @@ class VirtualControl(ServiceModule):
         # handle control
         self.state['throttle'] = QCAR_MAX_THROTTLE * self.state['throttle']
         self.state['steering'] = QCAR_MAX_STEERING * self.state['steering']
+        # print(self.state)
         # handle leds
         self.handle_leds()
         # write state to virtual qcar
         self.my_car.read_write_std(
-            self.state['throttle'],
-            self.state['steering'],
-            self.leds
+            throttle=self.state['throttle'],
+            steering=self.state['steering'],
+            LEDs=self.leds
         )

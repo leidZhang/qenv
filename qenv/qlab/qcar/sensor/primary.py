@@ -58,7 +58,7 @@ class VirtualCSICamera(ServiceModule): # wrapper class, implement more functions
         if self.camera.read():
             self.show_image()
             return self.camera.imageData
-        return np.array([])
+        return None
 
 
 class VirtualRGBDCamera(ServiceModule):
@@ -109,7 +109,7 @@ class VirtualRGBDCamera(ServiceModule):
         if self.camera.read_RGB() != -1:
             self.show_image_rgb()
             return self.camera.imageBufferRGB
-        return np.array([])
+        return None
 
     def show_image_depth(self, mode: str) -> None:
         if self.debug:
@@ -126,7 +126,7 @@ class VirtualRGBDCamera(ServiceModule):
             if mode == 'M':
                 self.show_image_depth(mode)
                 return  self.camera.imageBufferDepthM
-            return np.array([])
+            return None
 
     def read_image(self, mode: str='') -> np.ndarray:
         if mode == '':

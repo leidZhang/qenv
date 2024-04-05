@@ -7,7 +7,7 @@ CSI_CAMERA_SETTING: dict = {
     'orientation': np.array([[ 0, 0, 1], [ 1, 0, 0], [ 0, -1, 0]], dtype = np.float64),
     'frame_width': 820,
     'frame_height': 410,
-    'frame_rate': 33.3
+    'frame_rate': 30.0
 }
 
 RGBD_CAMERA_SETTING: dict = {
