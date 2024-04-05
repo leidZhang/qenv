@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QCar Setting</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <script src="script.js"></script>
+    <div class="section">
+        <h3>Operation Mode</h3>
+        <input type="radio" name="operation" id="mix" onchange="handleSpawn(); handleQCar()">
+        <span>Mix Control</span>  
+        <input type="radio" name="operation" id="local" onchange="handleSpawn(); handleQCar()">
+        <span>Virtual Environment Only</span> 
+        <input type="radio" name="operation" id="remote" onchange="handleSpawn(); handleQCar()">
+        <span>Remote Control Only</span> 
+    </div>
+    <div class="section">
+        <h3>Spawn Setting</h3>
+        <input type="radio" name="traffic" id="left" onchange="handleImage()">
+        <span>Left Hand Traffic</span> 
+        <input type="radio" name="traffic" id="right" onchange="handleImage()">
+        <span>Right Hand Traffic</span> 
+        <span class="input_label">Spawn Node</span>
+        <input name="spawn_node" id="spawn_node" class="short">
+        <span class="input_label">Destination Node</span>
+        <input name="destination_node" id="destination_node" class="short"> 
+        <br><img src="./images/Nodes_Left.PNG" alt="spawn_image" id="spawn_image" />
+    </div>
+    <div class="section">
+        <h3>Controller Selection</h3>
+        <input type="radio" name="controller" id="wheel" onchange="handleDevice()">
+        <span>Steering Wheel Controller</span>  
+        <input type="radio" name="controller" id="gamepad" onchange="handleDevice()">
+        <span>Logitech Gamepad Controller</span> 
+        <input type="radio" name="controller" id="keyboard" onchange="handleDevice()">
+        <span>Keyboard Control</span>   
+    </div>
+    <div class="section">
+        <h3>QCar Settings</h3>
+        <span class="input_label">QCar IP</span>
+        <input name="ip" id="ip" class="long">
+        <span class="input_label">Port</span>
+        <input name="port" id="port" class="mid">  
+        <span class="input_label">Device</span>
+        <input name="device" id="device" class="short">  
+    </div>
+    <div class="section">
+        <h3>Video Stream Source</h3>
+        <input type="radio" name="video" id="qcar"><span>QCar</span>  
+        <input type="radio" name="video" id="qlab"><span>QLab</span>
+        <input type="radio" name="video" id="none"><span>Run Without Video Stream Source</span>  
+    </div>
+    <div class="section">
+        <h3>Sensor Setting</h3>
+        <input type="checkbox" name="csi_camera" id="csi_camera"><span>CSI Camera</span>   
+        <input type="checkbox" name="rgbd_camera" id="rgbd_camera"><span>RGBD Camera</span> 
+        <input type="checkbox" name="lidar" id="lidar"><span>LiDAR</span> 
+    </div>
+    <div class="button_container">
+        <button onclick="handleSubmit()">APPLY</button>
+    </div>
+</body>
+</html>
