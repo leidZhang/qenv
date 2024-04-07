@@ -2,3 +2,6 @@ logidrivepy
 keyboard
 numpy
 opencv-python
+pandas
+keras
+matplotlib
