@@ -1,4 +1,4 @@
-# 3rd party import
+# python imports
 from abc import ABC, abstractmethod
 
 
@@ -19,10 +19,10 @@ class ServiceModule(ABC):
     def terminate(self) -> None:
         pass
 
-    def setup(self, *args) -> None:
-        pass
+    def set_debug(self, debug:bool) -> None:
+        self.debug: bool = debug
 
-    def is_valid(self) -> bool:
+    def setup(self, *args) -> None:
         return True
 
     def execute(self, *args) -> None:
