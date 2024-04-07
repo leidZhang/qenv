@@ -1,4 +1,5 @@
 # other imports
+import os
 import math
 import time
 # 3rd party imports
@@ -168,7 +169,8 @@ class VirtualGPS(ServiceModule):
             the state and time stamp.
     """
 
-    def __init__(self) -> None:
+    def __init__(self, debug: bool = False) -> None:
+        self.debug: bool = debug
         self.gps: QCarGPS = QCarGPS()
         self.time_stamp: float
         self.delta_t: float
@@ -213,6 +215,11 @@ class VirtualGPS(ServiceModule):
         if self.current_state != self.last_state or current_time - self.time_stamp >= 0.25:
             self.delta_t = current_time - self.time_stamp
             self.speed_vector = self.calculate_speed_vector(self.current_state, self.delta_t)
+            if self.debug:
+                os.system("cls")
+                print(f"last position: {self.last_state}")
+                print(f"current position: {self.current_state}")
+                print(f"dt: {self.delta_t}, state: {self.speed_vector}")
             # update time stamp
             self.time_stamp = current_time
             # update position
