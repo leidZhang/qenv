@@ -27,7 +27,7 @@ import pal.resources.rtmodels as rtmodels
 #endregion
 
 #Function to setup QLabs, Spawn in QCar, and run real time model
-def setup(initialPosition, initialOrientation):
+def setup(initialPosition=[0, 0, 0], initialOrientation=[0, 0, 0]):
     # Try to connect to Qlabs
 
     os.system('cls')
@@ -83,7 +83,7 @@ def setup(initialPosition, initialOrientation):
 
     #-1.335+ x_offset, -2.5+ y_offset, 0.005
     #0, 0, -45
-    car2.spawn_id(actorNumber=0, location=initialPosition, rotation=initialOrientation, scale=[.1, .1, .1], configuration=0, waitForConfirmation=True)
+    # car2.spawn_id(actorNumber=0, location=initialPosition, rotation=initialOrientation, scale=[.1, .1, .1], configuration=0, waitForConfirmation=True)
     basicshape2 = QLabsBasicShape(qlabs)
     basicshape2.spawn_id_and_parent_with_relative_transform(actorNumber=102, location=[1.15, 0, 1.8], rotation=[0, 0, 0], scale=[.65, .65, .1], configuration=basicshape2.SHAPE_SPHERE, parentClassID=car2.ID_QCAR, parentActorNumber=2, parentComponent=1,  waitForConfirmation=True)
     basicshape2.set_material_properties(color=[0.4,0,0], roughness=0.4, metallic=True, waitForConfirmation=True)
@@ -97,7 +97,7 @@ def setup(initialPosition, initialOrientation):
     camera3=QLabsFreeCamera(qlabs)
     camera3.spawn_degrees (location = [-0.36+ x_offset, -3.691+ y_offset, 2.652], rotation=[0, 47, 90])
 
-    car2.possess()
+    # car2.possess()
 
     # stop signs
     myStopSign = QLabsStopSign(qlabs)

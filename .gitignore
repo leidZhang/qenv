@@ -161,3 +161,4 @@ cython_debug/
 
 /policies/edge_following/
 /examples/vision_lanefollowing.py
+/training_data

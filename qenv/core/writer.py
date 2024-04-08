@@ -26,7 +26,7 @@ class DataWriter:
             for data collection, execute in every iteration
     """
 
-    def __init__(self, folder_name: str = 'training_data', csv_name: str = 'training_data') -> None:
+    def __init__(self, folder_name: str = 'training_data', csv_name: str = 'training_data.csv') -> None:
         current_path: str = os.getcwd()
         self.data_path: str = os.path.join(current_path, folder_name)
         self.csv_filepath: str = os.path.join(self.data_path, csv_name)
