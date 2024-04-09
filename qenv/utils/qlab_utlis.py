@@ -94,7 +94,7 @@ def spawn_on_node(roadmap: RoadMap, actor: QLabsActor, node_id: int = 2, add_dev
         y_position = deviated_position[1]
         orientation = deviated_position[2]
     # spawn actor on the road map
-    actor.spawn_id_degrees(
+    actor.spawn_id(
         actorNumber=0,
         location=[x_position, y_position, 0],
         rotation=[0, 0, orientation],
@@ -118,8 +118,7 @@ def spawn_on_waypoints(waypoint_sequence: np.ndarray, waypoint_angles: list, act
         y_position = deviated_position[1]
         orientation = deviated_position[2]
     # spawn actor on the road map
-    print(x_position, y_position, orientation)
-    actor.spawn_id_degrees(
+    actor.spawn_id(
         actorNumber=0,
         location=[x_position, y_position, 0],
         rotation=[0, 0, orientation],
