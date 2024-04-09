@@ -29,5 +29,8 @@ To install and run this project, you need to have some packages, QLab and Logite
 ### Control QCar by Script
 ![control script demo](doc/gifs/edge_following.gif)
 
+### Spawn QCar on a Random Position of the Route
+![random_spawn demo](doc/gifs/random_spawn.gif)
+
 ## License
 This project is licensed under the Apache-2.0 license - see the LICENSE file for details.
