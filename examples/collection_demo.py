@@ -60,7 +60,14 @@ class ImageDataWriter(DataWriter):
 def spawn_on_seq(car: QLabsQCar, waypoint_sequence: np.ndarray, degree=0, waypoint_id: int = 0) -> None:
     x_position = waypoint_sequence[waypoint_id][0]
     y_position = waypoint_sequence[waypoint_id][1]
-    car.spawn_id(actorNumber=0, location=[x_position, y_position, 0], rotation=[0, 0, degree], scale=[.1, .1, .1], configuration=0, waitForConfirmation=True)
+    car.spawn_id(
+        actorNumber=0,
+        location=[x_position, y_position, 0],
+        rotation=[0, 0, degree],
+        scale=[.1, .1, .1],
+        configuration=0,
+        waitForConfirmation=True
+    )
 
 def collect_trafficlight_data() -> None:
     # create map
@@ -73,12 +80,13 @@ def collect_trafficlight_data() -> None:
     road_map: ACCRoadMap = ACCRoadMap()
     node_sequence: list = [10, 2, 4, 14, 20, 22, 10]
     waypoint_sequence: np.ndarray = road_map.generate_path(node_sequence)
-    print(waypoint_sequence)
+    # print(waypoint_sequence)
     degree: float = math.pi / 4
     spawn_on_seq(car=car, waypoint_sequence=waypoint_sequence, waypoint_id=410, degree=degree)
     Process(target=traffic_lights_setup).start()
     time.sleep(5)
-    print("Start Recording...")
+
+    print("Start Collection...")
     image_counter: int = 0
     while degree <= 3 * math.pi / 4:
         spawn_on_seq(car=car, waypoint_sequence=waypoint_sequence, waypoint_id=410, degree=degree)
@@ -91,4 +99,5 @@ def collect_trafficlight_data() -> None:
         image_counter += 1
         car.destroy()
         degree += math.pi / 180
+
     print("Collection complete!")
