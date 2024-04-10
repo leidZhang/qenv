@@ -1,5 +1,6 @@
 # python imports
 import time
+import random
 # 3rd party imports
 import numpy as np
 # quanser imports
@@ -25,7 +26,8 @@ def random_spawn_demo() -> None:
 
     counter = 10
     while counter >= 0:
-        spawn_on_waypoints(waypoints, angles, car, add_deviate=False)
+        waypoint_id: int = random.randint(0, len(waypoints) - 1)
+        spawn_on_waypoints(waypoints, angles, car, waypoint_id, add_deviate=False)
         car.possess()
         time.sleep(2)
         car.destroy()

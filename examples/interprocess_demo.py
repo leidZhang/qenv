@@ -47,7 +47,7 @@ def run_qcar(queue: Queue) -> None:
 
         while True:
             car.execute_modules(queue)
-            if cv2.waitKey(int(1)) & 0xFF == ord('m'):
+            if cv2.waitKey(1) & 0xFF == ord('m'):
                 break
     except Exception as e:
         print(e)
