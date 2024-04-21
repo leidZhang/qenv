@@ -81,10 +81,16 @@ def cal_waypoint_angles(waypoint_sequence: np.ndarray, i) -> float:
     Returns:
     float: The angle in radians between the current waypoint and the next one in the sequence.
 
+    Raises:
+    - IndexError: If i is negative or i is greater than the length of waypoint_sequence
+
     Note:
     The function assumes that the waypoint_sequence contains at least i+2 elements and that
     the index i is non-negative.
     """
+    if i >= len(waypoint_sequence) or i < 0:
+        raise IndexError("Index out of range")
+
     waypoint_i = (waypoint_sequence[i][0], waypoint_sequence[i][1])
     waypoint_j = (waypoint_sequence[i+1][0], waypoint_sequence[i+1][1])
     delta_x = waypoint_j[0] - waypoint_i[0]
@@ -122,6 +128,9 @@ def get_waypoint_angles(waypoint_sequence: np.ndarray) -> list:
     Returns:
     list: A list of angles in radians, one for each pair of consecutive waypoints in the sequence.
     """
+    if len(waypoint_sequence) < 2:
+        return []
+
     waypoint_angles: list = []
     for i in range(len(waypoint_sequence)):
         if i != len(waypoint_sequence) - 1:
@@ -145,9 +154,15 @@ def get_deviate_state(position: Union[list, np.ndarray]) -> list:
     Returns:
     list: The new position and orientation after applying the deviation, in the format [x_position, y_position, orientation].
 
+    Rasies:
+    - ValueError: If the input array does not have 3 elements
+
     Note:
     The function assumes that the 'position' parameter includes the orientation as the third element.
     """
+    if len(position) != 3:
+        raise ValueError("Incorrect format of position array!")
+
     # get random deviate
     deviate: float = get_random_deviate(0.1)
     orientation_deviate: float = get_random_deviate(0.15)

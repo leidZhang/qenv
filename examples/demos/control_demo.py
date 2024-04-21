@@ -3,7 +3,7 @@ import os
 # 3rd party imports
 import cv2
 # custom imports
-from policies.manual.keyboard import KeyboardController
+from examples.policies.manual.keyboard import KeyboardController
 from qenv.utils.qlab_utlis import connect_to_qlab
 from qenv.qlab.qcar.control import VirtualControl
 from qenv.qlab.qcar.sensor import VirtualCSICamera
